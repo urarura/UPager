@@ -11,6 +11,8 @@ struct ContentView: View {
     @State private var showNumbersSample = false
     @State private var showDatesSample = false
     @State private var showImagesSample = false
+    @State private var showFixedNumbersSample = false
+    @State private var showFixedImagesSample = false
     let windowSize: CGSize?
     
     init() {
@@ -31,6 +33,8 @@ struct ContentView: View {
                 Button("Numbers", action: { showNumbersSample.toggle() })
                 Button("Dates", action: { showDatesSample.toggle() })
                 Button("Images", action: { showImagesSample.toggle() })
+                Button("Numbers (fixed size)", action: { showFixedNumbersSample.toggle() })
+                Button("Images (fixed size)", action: { showFixedImagesSample.toggle() })
             }
             .listStyle(.plain)
             .frame(maxWidth: .infinity)
@@ -46,6 +50,14 @@ struct ContentView: View {
         }
         .sheet(isPresented: $showImagesSample) {
             ImagesPagerView()
+                .frame(minWidth: windowSize?.width, minHeight: windowSize?.height)
+        }
+        .sheet(isPresented: $showFixedNumbersSample) {
+            FixedNumbersPagerView()
+                .frame(minWidth: windowSize?.width, minHeight: windowSize?.height)
+        }
+        .sheet(isPresented: $showFixedImagesSample) {
+            FixedImagesPagerView()
                 .frame(minWidth: windowSize?.width, minHeight: windowSize?.height)
         }
     }

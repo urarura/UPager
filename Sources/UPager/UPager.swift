@@ -28,9 +28,19 @@ import SwiftUI
 ///
 /// Use a type comforming ``Hashable`` protocol for selection value such as Int, String,
 /// and DateComponents.
+///
+/// The following example creates a tab view with **fixed** number of elements to show.
+///
+///     // selection is defined as Binding<Int> type in this case.
+///     UPager([1, 2, 3, 4, 5], selection: $selection) { element in
+///         Text("\(element)")
+///     } onPageChanged: { element in
+///         print("\(element) is currently displayed.")
+///     }
 @available(iOS 14.0, macOS 11.0, *)
 public struct UPager<Element, Content>: View where Element: Hashable, Content: View {
     @Environment(\.scenePhase) var scenePhase
+    let fixedElements: [Element]
     @State var elements: [Element]
     @Binding var selection: Element
     let content: (Element) -> Content
@@ -45,29 +55,44 @@ public struct UPager<Element, Content>: View where Element: Hashable, Content: V
     
     let supportsLandscape: Bool
     
-    /// Creates an instance that selects from content associated with
-    /// `Selection` values.
+    /// Creates a pager with fixed number of items
     ///
+    /// - Parameter elements: All elements to show
     /// - Parameter selection: A binding to the selected element.
     ///   The element must conform to ``Hashable`` protocol.
     /// - Parameter content: The view for the specified element.
     /// - Parameter onPageChanged: The action to perform when page is changed.
     ///
-    public init(selection: Binding<Element>,
-         content: @escaping (Element) -> Content,
-         onPageChanged: @escaping (Element) -> Void
+    public init(_ elements: [Element],
+                selection: Binding<Element>,
+                content: @escaping (Element) -> Content,
+                onPageChanged: @escaping (Element) -> Void
     ) {
+        guard elements.contains(selection.wrappedValue) else {
+            fatalError("elements should contains selection.")
+        }
+        
+        self.fixedElements = elements
         self._elements = State(initialValue: [selection.wrappedValue])
         self._selection = selection
         self.content = content
         self.onPageChanged = onPageChanged
-        self.onReachedToFirst = { elem in [] }
-        self.onReachedToLast = { elem in [] }
+        self.onReachedToFirst = { elem in
+            if let idx = elements.firstIndex(of: elem) {
+                return elements.dropLast(elements.count - idx)
+            }
+            return []
+        }
+        self.onReachedToLast = { elem in
+            if let idx = elements.firstIndex(of: elem) {
+                return Array(elements.dropFirst(idx + 1))
+            }
+            return []
+        }
         self.supportsLandscape = Bundle.main.supportsLandscape
     }
     
-    /// Creates an instance that selects from content associated with
-    /// `Selection` values.
+    /// Creates a pager with inifinite number of items
     ///
     /// - Parameter selection: A binding to the selected element.
     ///   The element must conform to ``Hashable`` protocol.
@@ -86,6 +111,7 @@ public struct UPager<Element, Content>: View where Element: Hashable, Content: V
          onReachedToFirst: @escaping (Element) -> [Element],
          onReachedToLast: @escaping (Element) -> [Element]
     ) {
+        self.fixedElements = []
         self._elements = State(initialValue: [selection.wrappedValue])
         self._selection = selection
         self.content = content

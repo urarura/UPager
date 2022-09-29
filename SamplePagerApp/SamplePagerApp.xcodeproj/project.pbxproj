@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD352FC628E5747300CCD2D2 /* FixedNumbersPagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD352FC528E5747300CCD2D2 /* FixedNumbersPagerView.swift */; };
+		DD352FC728E5747300CCD2D2 /* FixedNumbersPagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD352FC528E5747300CCD2D2 /* FixedNumbersPagerView.swift */; };
+		DD352FC928E5765700CCD2D2 /* FixedImagesPagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD352FC828E5765700CCD2D2 /* FixedImagesPagerView.swift */; };
+		DD352FCA28E5765700CCD2D2 /* FixedImagesPagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD352FC828E5765700CCD2D2 /* FixedImagesPagerView.swift */; };
 		DD74812128E2B51400878717 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD74812028E2B51400878717 /* Preview Assets.xcassets */; };
 		DD74812628E2B5B600878717 /* SamplePagerAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7C40AF28E293C100FDCBCE /* SamplePagerAppApp.swift */; };
 		DD74812828E2B5B600878717 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7C40B128E293C100FDCBCE /* ContentView.swift */; };
@@ -34,6 +38,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DD352FC528E5747300CCD2D2 /* FixedNumbersPagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedNumbersPagerView.swift; sourceTree = "<group>"; };
+		DD352FC828E5765700CCD2D2 /* FixedImagesPagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedImagesPagerView.swift; sourceTree = "<group>"; };
 		DD74811728E2B51300878717 /* SamplePagerApp macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SamplePagerApp macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD74812028E2B51400878717 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DD74812228E2B51400878717 /* SamplePagerApp_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SamplePagerApp_macOS.entitlements; sourceTree = "<group>"; };
@@ -120,6 +126,8 @@
 				DD74813128E2CC3500878717 /* DateView.swift */,
 				DD74812C28E2C0BA00878717 /* ImagesPagerView.swift */,
 				DD74813328E2CC9900878717 /* ImageView.swift */,
+				DD352FC528E5747300CCD2D2 /* FixedNumbersPagerView.swift */,
+				DD352FC828E5765700CCD2D2 /* FixedImagesPagerView.swift */,
 				DD74813828E2CF4A00878717 /* CloseButton.swift */,
 				DD7C40B328E293C300FDCBCE /* Assets.xcassets */,
 				DD7C40B528E293C300FDCBCE /* Preview Content */,
@@ -248,6 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD352FC728E5747300CCD2D2 /* FixedNumbersPagerView.swift in Sources */,
 				DD74813A28E2CFBA00878717 /* CloseButton.swift in Sources */,
 				DD74813628E2CF1100878717 /* ImageView.swift in Sources */,
 				DD74812E28E2C3F500878717 /* ImagesPagerView.swift in Sources */,
@@ -256,6 +265,7 @@
 				DD74813528E2CF0D00878717 /* DateView.swift in Sources */,
 				DD74812B28E2B5B600878717 /* DatesPagerView.swift in Sources */,
 				DD74812828E2B5B600878717 /* ContentView.swift in Sources */,
+				DD352FCA28E5765700CCD2D2 /* FixedImagesPagerView.swift in Sources */,
 				DD74812A28E2B5B600878717 /* NumbersPagerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD352FC628E5747300CCD2D2 /* FixedNumbersPagerView.swift in Sources */,
 				DD74813928E2CF4A00878717 /* CloseButton.swift in Sources */,
 				DD74812D28E2C0BA00878717 /* ImagesPagerView.swift in Sources */,
 				DD7C40C628E2979800FDCBCE /* NumbersPagerView.swift in Sources */,
@@ -272,6 +283,7 @@
 				DD7C40B028E293C100FDCBCE /* SamplePagerAppApp.swift in Sources */,
 				DD74813428E2CC9900878717 /* ImageView.swift in Sources */,
 				DD7C40C728E2979800FDCBCE /* DatesPagerView.swift in Sources */,
+				DD352FC928E5765700CCD2D2 /* FixedImagesPagerView.swift in Sources */,
 				DD74813028E2CC1200878717 /* NumberView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,7 +9,6 @@ import SwiftUI
 import UPager
 
 struct DatesPagerView: View {
-    @Environment(\.dismiss) private var dismiss
     @State private var selection = Calendar.current.dateComponents([.year, .month, .day], from: Date())
     let cacheNum = 5
     let dateFormatter = {

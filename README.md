@@ -16,7 +16,7 @@ SwiftUI's TabView supports pagination by attaching the .tabViewStyle() modifier 
     .tabViewStyle(.page)
 
 However, TabView is limited in that it can only handle a fixed number of items and does not support changes in device orientation.
-This package provides a pager supporting infinite number of items and changes in device orientation.
+This package provides a pager supporting infinite/fixed number of items and changes in device orientation.
 
 ## Prerequisites
 
@@ -46,6 +46,8 @@ You can use Swift Package Manager to add UPager to your project.
 
 3. Write View
 
+   * For view with inifinite number of items
+
         struct NewlyCreatedView: View {
             @State private var selection = 1
         
@@ -62,17 +64,38 @@ You can use Swift Package Manager to add UPager to your project.
             }
         }
 
-   UPager has the following parameters:
-   * **selection**: A binding to the selected element.
-   The element must conform to ``Hashable`` protocol.
-   * **content**: The view for the specified element.
-   * **onPageChanged**: The action to perform when page is changed.
-   * **onReachedToFirst**: The action to perform when page is
-   reached to the first element of cached elements. You must return array
-   consective to the cached elements.
-   * **onReachedToLast**: The action to perform when page is
-   reached to the last element of cached elements. You must return array
-   consective to the cached elements.
+     Parameters:
+     * **selection**: A binding to the selected element.
+     The element must conform to ``Hashable`` protocol.
+     * **content**: The view for the specified element.
+     * **onPageChanged**: The action to perform when page is changed.
+     * **onReachedToFirst**: The action to perform when page is
+     reached to the first element of cached elements. You must return array
+     consective to the cached elements.
+     * **onReachedToLast**: The action to perform when page is
+     reached to the last element of cached elements. You must return array
+     consective to the cached elements.
+
+   * For view with fixed number of items
+   
+        struct NewlyCreatedView: View {
+            @State private var selection = 1
+        
+            var body: some View {
+                UPager([1, 2, 3, 4, 5], selection: $selection) { element in
+                    Text("\(element)")
+                } onPageChanged: { element in
+                    print("\(element) is currently displayed.")
+                }
+            }
+        }
+
+     Parameters:
+     * **elements**: All elements to show.
+     * **selection**: A binding to the selected element.
+     The element must conform to ``Hashable`` protocol.
+     * **content**: The view for the specified element.
+     * **onPageChanged**: The action to perform when page is changed.
 
 Please see the sample project for more details.
 

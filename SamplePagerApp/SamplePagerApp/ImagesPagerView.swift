@@ -9,7 +9,6 @@ import SwiftUI
 import UPager
 
 struct ImagesPagerView: View {
-    @Environment(\.dismiss) private var dismiss
     @State private var selection = 0
     let images = ["circle", "triangle", "rectangle", "pentagon", "hexagon"]
     let cacheNum = 3

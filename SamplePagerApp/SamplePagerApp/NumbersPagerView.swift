@@ -9,7 +9,6 @@ import SwiftUI
 import UPager
 
 struct NumbersPagerView: View {
-    @Environment(\.dismiss) private var dismiss
     @State private var selection = 1
     let cacheNum = 5
 

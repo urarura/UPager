@@ -2,6 +2,8 @@
 
 UPager is a pure SwiftUI pager for iOS and macOS.
 
+https://user-images.githubusercontent.com/4135544/192944720-4a84bf42-7273-47fb-9f91-a2d63c3b3799.mov
+
 ## Why Use UPager
 
 SwiftUI's TabView supports pagination by attaching the .tabViewStyle() modifier to the TabView, passing in .page like below.

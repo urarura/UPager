@@ -48,21 +48,21 @@ You can use Swift Package Manager to add UPager to your project.
 
    * For view with inifinite number of items
 
-        struct NewlyCreatedView: View {
-            @State private var selection = 1
-        
-            var body: some View {
-                UPager(selection: $selection) { element in
-                    Text("\(element)")
-                } onPageChanged: { element in
-                    print("\(element) is currently displayed.")
-                } onReachedToFirst: { element in
-                    return Array((element-5)..<element)
-                } onReachedToLast: { element in
-                    return Array((element+1)...(element+5))
-                }
-            }
-        }
+         struct NewlyCreatedView: View {
+             @State private var selection = 1
+         
+             var body: some View {
+                 UPager(selection: $selection) { element in
+                     Text("\(element)")
+                 } onPageChanged: { element in
+                     print("\(element) is currently displayed.")
+                 } onReachedToFirst: { element in
+                     return Array((element-5)..<element)
+                 } onReachedToLast: { element in
+                     return Array((element+1)...(element+5))
+                 }
+             }
+         }
 
      Parameters:
      * **selection**: A binding to the selected element.
@@ -78,17 +78,17 @@ You can use Swift Package Manager to add UPager to your project.
 
    * For view with fixed number of items
    
-        struct NewlyCreatedView: View {
-            @State private var selection = 1
-        
-            var body: some View {
-                UPager([1, 2, 3, 4, 5], selection: $selection) { element in
-                    Text("\(element)")
-                } onPageChanged: { element in
-                    print("\(element) is currently displayed.")
-                }
-            }
-        }
+         struct NewlyCreatedView: View {
+             @State private var selection = 1
+         
+             var body: some View {
+                 UPager([1, 2, 3, 4, 5], selection: $selection) { element in
+                     Text("\(element)")
+                 } onPageChanged: { element in
+                     print("\(element) is currently displayed.")
+                 }
+             }
+         }
 
      Parameters:
      * **elements**: All elements to show.

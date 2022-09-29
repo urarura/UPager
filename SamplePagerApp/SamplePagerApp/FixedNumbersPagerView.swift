@@ -17,10 +17,8 @@ struct FixedNumbersPagerView: View {
 
             UPager(items, selection: $selection) { element in
                 numberView(number: element)
-            } onPageChanged: { element in
-                print("\(element) is currently displayed.")
             }
-
+            
             CloseButton()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

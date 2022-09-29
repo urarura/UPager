@@ -18,13 +18,13 @@ struct ImagesPagerView: View {
             
             UPager(selection: $selection) { element in
                 ImageView(selection: $selection, imageName: imageName(element))
-            } onPageChanged: { element in
-                let imageName = imageName(element)
-                print("\(imageName) is currently displayed.")
             } onReachedToFirst: { element in
                 return Array((element-cacheNum)..<element)
             } onReachedToLast: { element in
                 return Array((element+1)...(element+cacheNum))
+            } onPageChanged: { element in
+                let imageName = imageName(element)
+                print("\(imageName) is currently displayed.")
             }
             
             CloseButton()

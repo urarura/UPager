@@ -66,7 +66,7 @@ public struct UPager<Element, Content>: View where Element: Hashable, Content: V
     public init(_ elements: [Element],
                 selection: Binding<Element>,
                 content: @escaping (Element) -> Content,
-                onPageChanged: @escaping (Element) -> Void
+                onPageChanged: @escaping (Element) -> Void = { _ in }
     ) {
         guard elements.contains(selection.wrappedValue) else {
             fatalError("elements should contains selection.")
@@ -97,27 +97,27 @@ public struct UPager<Element, Content>: View where Element: Hashable, Content: V
     /// - Parameter selection: A binding to the selected element.
     ///   The element must conform to ``Hashable`` protocol.
     /// - Parameter content: The view for the specified element.
-    /// - Parameter onPageChanged: The action to perform when page is changed.
     /// - Parameter onReachedToFirst: The action to perform when page is
     ///   reached to the first element of cached elements. You must return array
     ///   consective to the cached elements.
     /// - Parameter onReachedToLast: The action to perform when page is
     ///   reached to the last element of cached elements. You must return array
     ///   consective to the cached elements.
+    /// - Parameter onPageChanged: The action to perform when page is changed.
     ///
     public init(selection: Binding<Element>,
-         content: @escaping (Element) -> Content,
-         onPageChanged: @escaping (Element) -> Void,
-         onReachedToFirst: @escaping (Element) -> [Element],
-         onReachedToLast: @escaping (Element) -> [Element]
+                content: @escaping (Element) -> Content,
+                onReachedToFirst: @escaping (Element) -> [Element],
+                onReachedToLast: @escaping (Element) -> [Element],
+                onPageChanged: @escaping (Element) -> Void = { _ in }
     ) {
         self.fixedElements = []
         self._elements = State(initialValue: [selection.wrappedValue])
         self._selection = selection
         self.content = content
-        self.onPageChanged = onPageChanged
         self.onReachedToFirst = onReachedToFirst
         self.onReachedToLast = onReachedToLast
+        self.onPageChanged = onPageChanged
         self.supportsLandscape = Bundle.main.supportsLandscape
     }
 
@@ -257,8 +257,6 @@ struct UPager_Previews: PreviewProvider {
     static var previews: some View {
         UPager(selection: .constant(3)) { element in
             Text("\(element)")
-        } onPageChanged: { element in
-
         } onReachedToFirst: { element in
             return []
         } onReachedToLast: { element in

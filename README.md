@@ -54,8 +54,6 @@ You can use Swift Package Manager to add UPager to your project.
              var body: some View {
                  UPager(selection: $selection) { element in
                      Text("\(element)")
-                 } onPageChanged: { element in
-                     print("\(element) is currently displayed.")
                  } onReachedToFirst: { element in
                      return Array((element-5)..<element)
                  } onReachedToLast: { element in
@@ -68,13 +66,13 @@ You can use Swift Package Manager to add UPager to your project.
      * **selection**: A binding to the selected element.
      The element must conform to ``Hashable`` protocol.
      * **content**: The view for the specified element.
-     * **onPageChanged**: The action to perform when page is changed.
      * **onReachedToFirst**: The action to perform when page is
      reached to the first element of cached elements. You must return array
      consective to the cached elements.
      * **onReachedToLast**: The action to perform when page is
      reached to the last element of cached elements. You must return array
      consective to the cached elements.
+     * **onPageChanged**(optional): The action to perform when page is changed.
 
    * For view with fixed number of items
    
@@ -84,8 +82,6 @@ You can use Swift Package Manager to add UPager to your project.
              var body: some View {
                  UPager([1, 2, 3, 4, 5], selection: $selection) { element in
                      Text("\(element)")
-                 } onPageChanged: { element in
-                     print("\(element) is currently displayed.")
                  }
              }
          }
@@ -95,7 +91,7 @@ You can use Swift Package Manager to add UPager to your project.
      * **selection**: A binding to the selected element.
      The element must conform to ``Hashable`` protocol.
      * **content**: The view for the specified element.
-     * **onPageChanged**: The action to perform when page is changed.
+     * **onPageChanged**(optional): The action to perform when page is changed.
 
 Please see the sample project for more details.
 

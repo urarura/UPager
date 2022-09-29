@@ -17,8 +17,6 @@ struct FixedImagesPagerView: View {
             
             UPager(images, selection: $selection) { element in
                 imageView(imageName: element)
-            } onPageChanged: { element in
-                print("\(element) is currently displayed.")
             }
             
             CloseButton()

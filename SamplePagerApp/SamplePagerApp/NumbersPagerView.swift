@@ -17,12 +17,12 @@ struct NumbersPagerView: View {
             
             UPager(selection: $selection) { element in
                 NumberView(selection: $selection, num: element)
-            } onPageChanged: { element in
-                print("\(element) is currently displayed.")
             } onReachedToFirst: { element in
                 return Array((element-cacheNum)..<element)
             } onReachedToLast: { element in
                 return Array((element+1)...(element+cacheNum))
+            } onPageChanged: { element in
+                print("\(element) is currently displayed.")
             }
 
             CloseButton()

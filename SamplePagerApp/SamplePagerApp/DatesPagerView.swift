@@ -23,9 +23,6 @@ struct DatesPagerView: View {
             
             UPager(selection: $selection) { element in
                 DateView(selection: $selection, dateComps: element)
-            } onPageChanged: { element in
-                let dateStr = dateFormatter.string(from: Calendar.current.date(from: element)!)
-                print("\(dateStr) is currently displayed.")
             } onReachedToFirst: { element in
                 let cal = Calendar.current
                 return ((-cacheNum)..<0).map { num in
@@ -36,6 +33,9 @@ struct DatesPagerView: View {
                 return (1...cacheNum).map { num in
                     cal.dateComponents([.year, .month, .day], from: cal.date(byAdding: .day, value: num, to: cal.date(from: element)!)!)
                 }
+            } onPageChanged: { element in
+                let dateStr = dateFormatter.string(from: Calendar.current.date(from: element)!)
+                print("\(dateStr) is currently displayed.")
             }
             
             CloseButton()
